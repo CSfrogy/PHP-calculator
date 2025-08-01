@@ -1,3 +1,12 @@
+<?php
+require_once 'function.php';
+
+$calculator = new Calculator();
+
+if(isset($_POST['submit'])){
+    $calculator->calculate();
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,26 +20,36 @@
 <body>
     <main class="main-container">
         <div class="form-container">
-            <form action="#" method="post">
+            <form method="post">
 
                 <label for="number1">Please enter a first number:</label>
-                <input type="number" id="number1" name="number1">
+                <input type="number" id="number1" name="number1" value="<?= htmlspecialchars($_POST['number1'] ?? '') ?>">
+
 
                 <label for="operator">Choose an operator:</label>
                 <select name="operator" id="operator">
-                    <option value="add">+</option>
-                    <option value="sub">-</option>
-                    <option value="multi">*</option>
-                    <option value="div">/</option>
+                    <?php
+                    $currentOperator = $_POST['operator'] ?? 'add';
+                    $operators = [
+                        'add' => '+',
+                        'sub' => '-',
+                        'multi' => '*',
+                        'div' => '/'
+                    ];
+                    foreach ($operators as $value => $symbol) {
+                        $selected = $currentOperator === $value ? ' selected' : '';
+                        echo "<option value=\"$value\"$selected>$symbol</option>";
+                    }
+                    ?>
                 </select>
 
                 <label for="number2">Please enter a second number:</label>
-                <input type="number" id="number2" name="number2">
+                <input type="number" id="number2" name="number2" value="<?= htmlspecialchars($_POST['number2'] ?? '')  ?>">
 
-                <button type="submit">Calculate</button>
+                <button name="submit" type="submit">Calculate</button>
 
                 <label for="result">Result:</label>
-                <input type="text" id="result" name="result">
+                <input type="text" id="result" name="result" value="<?= htmlspecialchars($calculator->getResult()) ?>" readonly>
             </form>
         </div>
     </main>
