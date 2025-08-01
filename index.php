@@ -9,10 +9,22 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="input-container">
-            <h1>Please input number</h1>
-            <h2>Select operation</h2>
-        </div>
+        <form method="post" action="#">
+            <label for="number1">Please enter a number:</label>
+                <input type="number" id="number1" name="number1">
+            <label for="number2">Please enter a number:</label>
+                <input type="number" id="number2" name="number2">
+            <label for="operator">Choose an operator:</label>
+
+            <select name="operator" id="operator">
+                <option value="add">+</option>
+                <option value="sub">-</option>
+                <option value="multi">*</option>
+                <option value="div">/</option>
+            </select>
+            <input type="submit" value="Submit">
+            <p>Result:</p>
+        </form>
     </div>
 </body>
 </html>
