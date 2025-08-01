@@ -12,19 +12,23 @@
     <main class="main-container">
         <div class="form-container">
             <form action="#" method="post">
-                <label for="number1">Please enter a number:</label>
-                <input type="text" id="number1" name="number1">
-                <label for="number2">Please enter a number:</label>
-                <input type="text" id="number2" name="number2">
-                <label for="operator">Choose an operator:</label>
 
+                <label for="number1">Please enter a first number:</label>
+                <input type="number" id="number1" name="number1">
+
+                <label for="operator">Choose an operator:</label>
                 <select name="operator" id="operator">
                     <option value="add">+</option>
                     <option value="sub">-</option>
                     <option value="multi">*</option>
                     <option value="div">/</option>
                 </select>
-                <button>Calculate</button>
+
+                <label for="number2">Please enter a second number:</label>
+                <input type="number" id="number2" name="number2">
+
+                <button type="submit">Calculate</button>
+
                 <label for="result">Result:</label>
                 <input type="text" id="result" name="result">
             </form>
